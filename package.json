@@ -1,0 +1,56 @@
+{
+  "name": "simple-stripe-node",
+  "description": "Simple Stripe SDK for Node.js.",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs",
+      "default": "./dist/esm/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "types",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "build": "tsup",
+    "prepublishOnly": "npm run lint && npm run build",
+    "prepare": "husky"
+  },
+  "author": "nswbmw",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nswbmw/simple-stripe-node.git"
+  },
+  "keywords": [
+    "stripe",
+    "payment",
+    "credit card",
+    "visa",
+    "mastercard"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "20.1.0",
+    "@commitlint/config-conventional": "20.0.0",
+    "eslint": "9.39.1",
+    "husky": "9.1.7",
+    "neostandard": "0.12.2",
+    "tsup": "8.5.1"
+  },
+  "dependencies": {
+    "https-proxy-agent": "7.0.6",
+    "lite-request": "1.0.2",
+    "socks-proxy-agent": "8.0.5"
+  }
+}

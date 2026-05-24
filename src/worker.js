@@ -33,14 +33,13 @@ class Stripe {
     }
 
     const response = await fetch(this._getURL(url), fetchOptions)
+    const text = await response.text()
 
-    if (!response.ok) {
-      const text = await response.text()
-      throw new Error(`Stripe request failed: ${response.status} ${text}`)
+    try {
+      return JSON.parse(text)
+    } catch (e) {
+      return text
     }
-
-    const data = await response.json()
-    return data
   }
 }
 

@@ -1,3 +1,5 @@
+import * as qs from 'qs-esm'
+
 class Stripe {
   constructor (options = {}) {
     if (typeof options === 'string') {
@@ -28,7 +30,7 @@ class Stripe {
       fetchOptions.body = body
     } else {
       if (body != null) {
-        fetchOptions.body = new URLSearchParams(body)
+        fetchOptions.body = qs.stringify(body)
       }
     }
 

@@ -1,7 +1,7 @@
 {
   "name": "simple-stripe-node",
   "description": "Simple Stripe SDK for Node.js.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.js",
@@ -47,16 +47,18 @@
     "mastercard"
   ],
   "devDependencies": {
-    "@commitlint/cli": "20.1.0",
-    "@commitlint/config-conventional": "20.0.0",
-    "eslint": "9.39.1",
+    "@commitlint/cli": "21.0.2",
+    "@commitlint/config-conventional": "21.0.2",
+    "@types/qs": "6.15.1",
+    "eslint": "9.39.4",
     "husky": "9.1.7",
-    "neostandard": "0.12.2",
+    "neostandard": "0.13.0",
     "tsup": "8.5.1"
   },
   "dependencies": {
-    "https-proxy-agent": "7.0.6",
-    "lite-request": "1.0.2",
-    "socks-proxy-agent": "8.0.5"
+    "https-proxy-agent": "9.1.0",
+    "lite-request": "1.1.0",
+    "qs-esm": "8.0.1",
+    "socks-proxy-agent": "10.1.0"
   }
 }

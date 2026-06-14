@@ -1,3 +1,8 @@
+## v1.1.2 / 2026-06-14
+
+- chore(deps): update deps
+- fix: use qs-esm instead of URLSearchParams
+
 ## v1.1.1 / 2026-05-24
 
 - fix: worker.js expose error json

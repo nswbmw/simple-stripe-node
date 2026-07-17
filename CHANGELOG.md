@@ -1,3 +1,7 @@
+## v1.1.3 / 2026-07-17
+
+- fix: proxy validation
+
 ## v1.1.2 / 2026-06-14
 
 - chore(deps): update deps

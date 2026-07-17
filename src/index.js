@@ -20,6 +20,8 @@ class Stripe {
           this.agent = new HttpsProxyAgent(proxy)
         } else if (proxy.startsWith('socks://')) {
           this.agent = new SocksProxyAgent(proxy)
+        } else {
+          throw new Error(`Invalid proxy string: "${proxy}". Expected "http://..." or "socks://..."`)
         }
       } else if (typeof proxy === 'object') {
         if (!['http', 'socks'].includes(proxy.protocol)) {

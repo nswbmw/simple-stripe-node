@@ -13,6 +13,10 @@ class Stripe {
   }
 
   _getURL (url) {
+    if (url.startsWith('https://')) {
+      // absolute URL passthrough, e.g. https://files.stripe.com/v1/files
+      return url
+    }
     url = url.replace(/^\//, '')
     return `https://api.stripe.com/${url}`
   }
@@ -26,12 +30,15 @@ class Stripe {
       }, headers)
     }
 
-    if (typeof body === 'string') {
+    if (body instanceof FormData) {
+      // fetch sets the Content-Type with boundary automatically
       fetchOptions.body = body
-    } else {
-      if (body != null) {
-        fetchOptions.body = qs.stringify(body)
-      }
+      delete fetchOptions.headers['Content-Type']
+      delete fetchOptions.headers['content-type']
+    } else if (typeof body === 'string') {
+      fetchOptions.body = body
+    } else if (body != null) {
+      fetchOptions.body = qs.stringify(body)
     }
 
     const response = await fetch(this._getURL(url), fetchOptions)

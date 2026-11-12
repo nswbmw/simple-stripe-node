@@ -80,3 +80,36 @@ const stripeClient = new Stripe('sk_test_xxx')
   console.log(res)
 })().catch(console.error)
 ```
+
+### File upload (multipart/form-data)
+
+```js
+import { readFile } from 'node:fs/promises'
+import Stripe from 'simple-stripe-node'
+
+const stripeClient = new Stripe('sk_test_xxx')
+
+;(async () => {
+  // file upload uses the files.stripe.com domain (absolute URL)
+  const form = new FormData()
+  form.append('purpose', 'dispute_evidence')
+  const buffer = await readFile('receipt.pdf')
+  form.append('file', new Blob([buffer], { type: 'application/pdf' }), 'receipt.pdf')
+
+  const res = await stripeClient.execute({
+    method: 'POST',
+    url: 'https://files.stripe.com/v1/files',
+    body: form
+  })
+
+  /*
+  {
+    id: 'file_xxx',
+    object: 'file',
+    purpose: 'dispute_evidence',
+    ...
+  }
+  */
+  console.log(res)
+})().catch(console.error)
+```

@@ -41,6 +41,10 @@ class Stripe {
   }
 
   _getURL (url) {
+    if (url.startsWith('https://')) {
+      // absolute URL passthrough, e.g. https://files.stripe.com/v1/files
+      return url
+    }
     url = url.replace(/^\//, '')
     return `https://api.stripe.com/${url}`
   }
@@ -58,7 +62,9 @@ class Stripe {
       agent: this.agent
     }
 
-    if (body) {
+    if (body instanceof FormData) {
+      payload.body = body
+    } else if (body) {
       payload.form = body
     }
 

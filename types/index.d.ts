@@ -21,6 +21,7 @@ export interface ExecuteOptions {
   method?: HttpMethod
   url: string
   headers?: Record<string, string | number | boolean>
+  // object: form-encoded body; FormData: multipart/form-data body (file upload, e.g. https://files.stripe.com/v1/files)
   body?: any
 }
 
